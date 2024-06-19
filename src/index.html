@@ -6,18 +6,30 @@
         <title>Weather App</title>
     </head>
     <body>
-        <img alt="" id="imagem" />
+        <div class="container">
+            <div class="header">
+                <div class="app-name">
+                    <p>Weather App</p>
+                </div>
+                <div class="location-search-container">
+                    <form>
+                        <div>
+                            <label for="location">Enter your location:</label>
+                            <input type="search" name="location" id="location" />
+                            <button type="submit" id="submit-btn">Get Weather</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="temperature-scales">
+                    <p>°C, m/s</p>
+                    <p>°F, mph</p>
+                </div>
+            </div>
 
-        <div class="form-container">
-            <form>
-                <div>
-                    <label for="location">Enter your location:</label>
-                    <input type="text" name="location" id="location" />
-                </div>
-                <div class="submit-btn">
-                    <button type="submit" id="submit-btn">Get Weather</button>
-                </div>
-            </form>
+            <div class="city-info">
+                <p class="city-name"></p>
+                <p class=""></p>
+            </div>
         </div>
 
         <p id="weather-info-para"></p>
