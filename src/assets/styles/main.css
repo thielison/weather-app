@@ -5,14 +5,27 @@
 }
 
 .container {
+    display: grid;
+    width: 70%;
+    margin: auto;
+    gap: 2rem;
     padding: 2rem;
 }
 
-.header {
+div.header {
     display: flex;
     justify-content: space-between;
 }
 
-.header div.temperature-scales {
+div.header div.temperature-scales {
+    display: flex;
+}
+
+div.city-info {
+    justify-self: center;
+    text-align: center;
+}
+
+div.temperatures-info {
     display: flex;
 }

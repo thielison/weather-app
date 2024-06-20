@@ -2,10 +2,9 @@ const apiKey = "fd654da885e9428aaa611606240606";
 
 const fetchWeatherData = async (location) => {
     try {
-        const response = await fetch(
-            `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`,
-            { mode: "cors" }
-        );
+        const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}`, {
+            mode: "cors",
+        });
 
         if (!response.ok) {
             throw new Error(`Network response was not ok: ${response.statusText}`);
