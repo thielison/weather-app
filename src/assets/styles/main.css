@@ -4,17 +4,62 @@
     padding: 0;
 }
 
+body {
+    background-color: #242424;
+    font-family: "Poppins", sans-serif;
+    color: #fafafa;
+}
+
 .container {
     display: grid;
-    width: 70%;
+    grid-template-rows: 50px;
+    min-width: max-content;
+    max-width: 60%;
     margin: auto;
     gap: 2rem;
     padding: 2rem;
 }
 
 div.header {
+    align-self: center;
+    font-size: 1.5rem;
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
+    gap: 2rem;
+}
+
+div.header input[type="search"] {
+    color: #fafafa;
+    font-size: 1rem;
+    width: 400px;
+    padding: 0.7rem 1rem 0.7rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 0.7rem;
+    background-color: #373737;
+}
+
+div.header input[type="search"]:autofill {
+    border: 3px solid #373737;
+}
+
+div.header input[type="search"]:-webkit-autofill {
+    border: 3px solid #373737;
+}
+
+div.header button {
+    font-size: 1rem;
+    appearance: none;
+    border: none;
+    border-radius: 0.7rem;
+    padding: 0.7rem;
+    background-color: #373737;
+    color: #fafafa;
+}
+
+div.header button:hover {
+    cursor: pointer;
 }
 
 div.header div.temperature-scales {
