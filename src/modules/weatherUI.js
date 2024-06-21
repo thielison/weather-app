@@ -10,8 +10,8 @@ const displayWeatherData = (cityName, countryName, localDateTime, lastUpdateTime
     cityCountryElement.textContent = `${cityName}, ${countryName}`;
 
     const numOfDay = getDay(localDateTime);
-    localTimeElement.textContent = `${daysOfWeek[numOfDay]} ${format(localDateTime, "dd MM yyyy | hh:mm")}`;
-    lastUpdateElement.textContent = `Last updated: ${format(lastUpdateTime, "dd MM yyyy | hh:mm")}`;
+    localTimeElement.textContent = `${daysOfWeek[numOfDay]} ${format(localDateTime, "dd MMMM yyyy | hh:mm")}`;
+    lastUpdateElement.textContent = `Last updated: ${format(lastUpdateTime, "dd MMMM yyyy | hh:mm")}`;
 };
 
 const getWeatherData = async () => {
