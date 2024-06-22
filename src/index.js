@@ -1,5 +1,6 @@
 import "./assets/styles/main.css";
-import getWeatherData from "./modules/weatherUI";
+import displayWeatherData from "./modules/weatherUI";
+import { fetchWeatherData } from "./modules/weatherAPI";
 
 const validateInputField = () => {
     const input = document.getElementById("location");
@@ -16,10 +17,13 @@ const validateInputField = () => {
     return validityState.valueMissing;
 };
 
-document.getElementById("submit-btn").addEventListener("click", (e) => {
+document.getElementById("submit-btn").addEventListener("click", async (e) => {
     e.preventDefault();
 
     const isValueMissing = validateInputField();
 
-    if (!isValueMissing) getWeatherData();
+    if (!isValueMissing) {
+        const weatherData = await fetchWeatherData();
+        displayWeatherData(weatherData);
+    }
 });

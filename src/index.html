@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="container">
-            <div class="header">
+            <header class="header">
                 <div class="app-name">
                     <p>Weather App</p>
                 </div>
@@ -35,31 +35,62 @@
                     <p>°C, m/s</p>
                     <p>°F, mph</p>
                 </div>
-            </div>
+            </header>
 
-            <div class="city-info">
+            <section class="city-info">
                 <p class="city-country-names">Sao Paulo, Brazil</p>
                 <p class="local-time">Thursday 20 06 2024 | 08:47</p>
                 <p class="last-updated-climate">Last updated: 20 06 2024 | 08:45</p>
-            </div>
+            </section>
 
-            <!-- <div class="temperatures-info">
-                <div class="icon"></div>
-                <div class="current-temp current-climate-text">
-                    <p class="temp-f-c">23</p>
-                    <p class="text">Moderate Rain</p>
+            <section class="temperatures-info">
+                <div class="current-temperature-items">
+                    <div class="img-and-temperature">
+                        <img src="https://cdn.weatherapi.com/weather/64x64/night/143.png" width="40px" height="40px" />
+                        <p class="current-temperature">50°</p>
+                    </div>
+                    <p class="current-climate-text">Rainy like a lot</p>
                 </div>
-                <div class="min-max-temps">
+
+                <div class="climate-info-boxes">
+                    <div class="feels">
+                        <p>Feels Like</p>
+                        <p>50°</p>
+                    </div>
                     <div class="min-temp">
-                        <p class="min-text">Min</p>
-                        <p class="min-temp">9</p>
+                        <p>Min. Temp.</p>
+                        <p>5°</p>
                     </div>
                     <div class="max-temp">
-                        <p class="max-text">Max</p>
-                        <p class="max-temp">100</p>
+                        <p>Max. Temp.</p>
+                        <p>100°</p>
+                    </div>
+                    <div class="humidity">
+                        <p>Humidity</p>
+                        <p>88%</p>
+                    </div>
+                    <div class="precipitation">
+                        <p>Precipitation</p>
+                        <p>30mm</p>
+                    </div>
+                    <div class="chance-of-rain">
+                        <p>% of Rain</p>
+                        <p>20%</p>
+                    </div>
+                    <div class="wind">
+                        <p>Wind</p>
+                        <p>30km/h</p>
+                    </div>
+                    <div class="sunrise">
+                        <p>Sunrise</p>
+                        <p>6:00</p>
+                    </div>
+                    <div class="sunset">
+                        <p>Sunset</p>
+                        <p>18:00</p>
                     </div>
                 </div>
-            </div> -->
+            </section>
         </div>
 
         <p id="weather-info-para"></p>

@@ -19,7 +19,7 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: 50px;
+    grid-template-rows: 50px 110px 150px;
     min-width: max-content;
     max-width: 60%;
     margin: auto;
@@ -28,7 +28,7 @@ body {
 }
 
 /* HEADER */
-div.header {
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,12 +37,12 @@ div.header {
     gap: 2rem;
 }
 
-div.header .temperature-scales {
+.header .temperature-scales {
     display: flex;
     gap: 1rem;
 }
 
-div.header input[type="search"] {
+.header input[type="search"] {
     font-family: inherit;
     color: var(--main-font-color);
     font-size: 1rem;
@@ -55,12 +55,12 @@ div.header input[type="search"] {
     font-weight: 600;
 }
 
-div.header input[type="search"]::placeholder {
+.header input[type="search"]::placeholder {
     color: var(--main-font-color);
     font-weight: 600;
 }
 
-div.header button {
+.header button {
     font-family: inherit;
     font-size: 1rem;
     appearance: none;
@@ -72,27 +72,75 @@ div.header button {
     font-weight: 600;
 }
 
-div.header button:hover {
+.header button:hover {
     background-color: #fafafa84;
 }
 
-div.header button:hover {
+.header button:hover {
     cursor: pointer;
 }
 
 /* CITY INFO, DATE, CLOCK */
-div.city-info {
+section.city-info {
     text-align: center;
 }
 
-div.city-info .city-country-names {
+section.city-info .city-country-names {
     font-weight: 700;
     font-size: 40px;
 }
 
-div.city-info .local-time,
-div.city-info .last-updated-climate {
+section.city-info .local-time,
+section.city-info .last-updated-climate {
     font-size: 20px;
     color: #fafafaa1;
     font-weight: 500;
+}
+
+/* TODAY'S CLIMATE */
+section.temperatures-info {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fafafa61;
+    border-radius: 0.7rem;
+    gap: 1rem;
+    width: 400px;
+    height: 500px;
+    padding: 1rem;
+}
+
+section.temperatures-info div.current-temperature-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section.temperatures-info div.current-temperature-items p.current-temperature {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+section.temperatures-info div.current-temperature-items p.current-climate-text {
+    font-size: 20px;
+}
+
+/* BOXES INSIDE MAIN BOX */
+section.temperatures-info div.climate-info-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+section.temperatures-info div.climate-info-boxes div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
 }
