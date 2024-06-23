@@ -1,23 +1,27 @@
 const apiKey = "fd654da885e9428aaa611606240606";
 
-const processWeatherData = (weatherData) => {
-    console.log(weatherData);
+// Object Destructuring
+// This function receives the data fetched from the WeatherAPI and processes it.
+// location, current, and forecast are properties of the weatherData object.
+const processWeatherData = ({ location, current, forecast }) => {
+    const { name: cityName, country: countryName, localtime: localDateTime } = location;
 
-    const cityName = weatherData.location.name;
-    const countryName = weatherData.location.country;
-    const localDateTime = weatherData.location.localtime;
+    const {
+        temp_c: currentTempC,
+        condition: { text: currentCondition },
+        feelslike_c: feelsLikeC,
+        humidity,
+        precip_mm: precipitationMm,
+        wind_kph: wind,
+    } = current;
 
-    const currentTempC = weatherData.current.temp_c;
-    const currentCondition = weatherData.current.condition.text;
-    const lowestTempC = weatherData.forecast.forecastday[0].day.mintemp_c;
-    const highestTempC = weatherData.forecast.forecastday[0].day.maxtemp_c;
-    const feelsLikeC = weatherData.current.feelslike_c;
-    const humidity = weatherData.current.humidity;
-    const precipitationMm = weatherData.current.precip_mm;
-    const chanceOfRain = weatherData.forecast.forecastday[0].day.daily_chance_of_rain;
-    const wind = weatherData.current.wind_kph;
-    const sunrise = weatherData.forecast.forecastday[0].astro.sunrise;
-    const sunset = weatherData.forecast.forecastday[0].astro.sunset;
+    const {
+        mintemp_c: lowestTempC,
+        maxtemp_c: highestTempC,
+        daily_chance_of_rain: chanceOfRain,
+    } = forecast.forecastday[0].day;
+
+    const { sunrise, sunset } = forecast.forecastday[0].astro;
 
     return {
         cityName,
@@ -37,9 +41,8 @@ const processWeatherData = (weatherData) => {
     };
 };
 
-const fetchWeatherData = async () => {
-    const location = document.getElementById("location").value;
-
+// Fetch WeatherAPI and returns the already processed data.
+const fetchWeatherData = async (location) => {
     try {
         const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}`, {
             mode: "cors",

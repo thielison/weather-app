@@ -23,7 +23,14 @@ document.getElementById("submit-btn").addEventListener("click", async (e) => {
     const isValueMissing = validateInputField();
 
     if (!isValueMissing) {
-        const weatherData = await fetchWeatherData();
+        const location = document.getElementById("location").value;
+        const weatherData = await fetchWeatherData(location);
         displayWeatherData(weatherData);
     }
+});
+
+// City is always selected on first page load
+document.addEventListener("DOMContentLoaded", async () => {
+    const weatherData = await fetchWeatherData("New York");
+    displayWeatherData(weatherData);
 });

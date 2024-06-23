@@ -130,7 +130,7 @@ section.temperature-data div.temperature-scales {
 
 /* CLIMATE INFO BOXES */
 section.climate-info-boxes {
-    display: flex;
+    display: none;
     justify-content: center;
     flex-direction: column;
     gap: 2rem;

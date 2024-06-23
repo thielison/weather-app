@@ -13,6 +13,7 @@ const chanceOfRainEl = document.getElementById("chance-of-rain");
 const windEl = document.getElementById("wind");
 const sunriseEl = document.getElementById("sunrise");
 const sunsetEl = document.getElementById("sunset");
+const climateInfoElements = document.querySelector(".climate-info-boxes");
 
 const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -24,9 +25,11 @@ const displayWeatherData = (weatherData) => {
 
     temperatureEl.textContent = `${weatherData.currentTempC} °C`;
     currentClimateTextEl.textContent = weatherData.currentCondition;
-    lowestTempElC.textContent = `${weatherData.lowestTempC}°`;
-    highestTempElC.textContent = `${weatherData.highestTempC}°`;
-    feelsLikeTempElC.textContent = `${weatherData.feelsLikeC}°`;
+    lowestTempElC.textContent = `L: ${weatherData.lowestTempC}°`;
+    highestTempElC.textContent = `H: ${weatherData.highestTempC}°`;
+    feelsLikeTempElC.textContent = `Feels Like: ${weatherData.feelsLikeC}°`;
+
+    climateInfoElements.style.display = "flex";
     humidityEl.textContent = `${weatherData.humidity}%`;
     precipitationEl.textContent = `${weatherData.precipitationMm}mm`;
     chanceOfRainEl.textContent = `${weatherData.chanceOfRain}%`;
