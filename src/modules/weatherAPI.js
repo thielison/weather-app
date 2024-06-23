@@ -5,7 +5,6 @@ const processWeatherData = (weatherData) => {
     const cityName = weatherData.location.name;
     const countryName = weatherData.location.country;
     const localDateTime = weatherData.location.localtime;
-    const lastUpdateTime = weatherData.current.last_updated;
 
     return { cityName, countryName, localDateTime, lastUpdateTime, currentCondition };
 };

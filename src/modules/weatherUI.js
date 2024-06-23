@@ -13,7 +13,6 @@ const displayWeatherData = (weatherData) => {
         weatherData.localDateTime,
         "dd MMMM yyyy | hh:mm"
     )}`;
-    lastUpdateElement.textContent = `Last updated: ${format(weatherData.lastUpdateTime, "dd MMMM yyyy | hh:mm")}`;
 };
 
 export default displayWeatherData;

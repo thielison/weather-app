@@ -1,5 +1,5 @@
 :root {
-    --main-font-family: "Nunito", sans-serif;
+    --main-font-family: "Outfit", sans-serif;
     --background-color: linear-gradient(0deg, #4db7f9 0%, #2c6cbc 100%);
     --main-font-color: #fafafa;
 }
@@ -8,22 +8,25 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    line-height: 1.2;
 }
 
 body {
-    background: var(--background-color);
-    background-attachment: fixed;
+    background-image: url("../images/bg-image.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: var(--main-font-family);
     color: var(--main-font-color);
 }
 
 .container {
     display: grid;
-    grid-template-rows: 50px 110px 150px;
+    grid-template-rows: 100px 150px 1fr 1fr;
+    align-items: center;
     min-width: max-content;
-    max-width: 60%;
+    max-width: 80%;
+    height: 100vh;
     margin: auto;
-    gap: 2rem;
     padding: 2rem;
 }
 
@@ -37,21 +40,15 @@ body {
     gap: 2rem;
 }
 
-.header .temperature-scales {
-    display: flex;
-    gap: 1rem;
-}
-
 .header input[type="search"] {
     font-family: inherit;
     color: var(--main-font-color);
     font-size: 1rem;
-    width: 400px;
+    width: 300px;
     padding: 0.7rem 1rem 0.7rem 1rem;
-    border: none;
-    outline: none;
+    border: 2px solid white;
     border-radius: 0.7rem;
-    background-color: #fafafa61;
+    background-color: transparent;
     font-weight: 600;
 }
 
@@ -64,83 +61,108 @@ body {
     font-family: inherit;
     font-size: 1rem;
     appearance: none;
-    border: none;
+    border: 2px solid white;
     border-radius: 0.7rem;
     padding: 0.7rem;
-    background-color: #fafafa61;
+    background-color: transparent;
     color: var(--main-font-color);
     font-weight: 600;
 }
 
 .header button:hover {
-    background-color: #fafafa84;
-}
-
-.header button:hover {
     cursor: pointer;
+    background-color: #ececec84;
 }
 
-/* CITY INFO, DATE, CLOCK */
-section.city-info {
+/* CITY INFO, LOCALTIME AND DATE */
+section.city-local-time-info {
     text-align: center;
 }
 
-section.city-info .city-country-names {
-    font-weight: 700;
-    font-size: 40px;
+section.city-local-time-info .city {
+    letter-spacing: 3px;
+    font-weight: 800;
+    font-size: 4rem;
 }
 
-section.city-info .local-time,
-section.city-info .last-updated-climate {
-    font-size: 20px;
-    color: #fafafaa1;
+section.city-local-time-info .localtime {
+    font-size: 1.5rem;
+    color: #fafafac7;
     font-weight: 500;
+    letter-spacing: 2px;
 }
 
-/* TODAY'S CLIMATE */
-section.temperatures-info {
-    justify-self: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #fafafa61;
-    border-radius: 0.7rem;
-    gap: 1rem;
-    width: 400px;
-    height: 500px;
-    padding: 1rem;
-}
-
-section.temperatures-info div.current-temperature-items {
+/* CURRENT TEMPERATURE */
+section.temperature-data {
+    align-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
 }
 
-section.temperatures-info div.current-temperature-items p.current-temperature {
-    font-size: 50px;
-    font-weight: 700;
+section.temperature-data div.temp-text-info {
+    text-align: center;
+    font-weight: 400;
 }
 
-section.temperatures-info div.current-temperature-items p.current-climate-text {
-    font-size: 20px;
-}
-
-/* BOXES INSIDE MAIN BOX */
-section.temperatures-info div.climate-info-boxes {
+section.temperature-data div.l-temp-h-temp {
     display: flex;
-    flex-wrap: wrap;
+    font-size: 1.5rem;
     gap: 0.5rem;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
-section.temperatures-info div.climate-info-boxes div {
+section.temperature-data div.temp-text-info p.temperature {
+    font-weight: 800;
+    font-size: 5rem;
+}
+
+section.temperature-data div.temp-text-info p.current-climate-text {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+section.temperature-data div.temperature-scales {
+    display: flex;
+    margin-top: 1rem;
+}
+
+/* CLIMATE INFO BOXES */
+section.climate-info-boxes {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+section.climate-info-boxes div.first-row,
+section.climate-info-boxes div.second-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+section.climate-info-boxes div.first-row div,
+section.climate-info-boxes div.second-row div {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
+    gap: 0.5rem;
+    width: 200px;
     height: 100px;
-    border: 1px solid red;
+}
+
+section.climate-info-boxes div.first-row div p:first-of-type,
+section.climate-info-boxes div.second-row div p:first-of-type {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+section.climate-info-boxes div.first-row div p:last-of-type,
+section.climate-info-boxes div.second-row div p:last-of-type {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    font-weight: 400;
 }
