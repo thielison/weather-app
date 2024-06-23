@@ -13,7 +13,6 @@ const chanceOfRainEl = document.getElementById("chance-of-rain");
 const windEl = document.getElementById("wind");
 const sunriseEl = document.getElementById("sunrise");
 const sunsetEl = document.getElementById("sunset");
-const climateInfoElements = document.querySelector(".climate-info-boxes");
 
 const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -28,8 +27,6 @@ const displayWeatherData = (weatherData) => {
     lowestTempElC.textContent = `L: ${weatherData.lowestTempC}°`;
     highestTempElC.textContent = `H: ${weatherData.highestTempC}°`;
     feelsLikeTempElC.textContent = `Feels Like: ${weatherData.feelsLikeC}°`;
-
-    climateInfoElements.style.display = "flex";
     humidityEl.textContent = `${weatherData.humidity}%`;
     precipitationEl.textContent = `${weatherData.precipitationMm}mm`;
     chanceOfRainEl.textContent = `${weatherData.chanceOfRain}%`;
@@ -38,4 +35,18 @@ const displayWeatherData = (weatherData) => {
     sunsetEl.textContent = `${weatherData.sunset}`;
 };
 
-export default displayWeatherData;
+const toggleElementsVisibility = () => {
+    const paraElements = document.querySelectorAll("p");
+    const loadingIcon = document.querySelector(".loading-icon");
+
+    // Ensures that loadingIcon exists before trying to toggle its class, preventing potential errors
+    if (loadingIcon) {
+        loadingIcon.classList.toggle("visible");
+    }
+
+    paraElements.forEach((para) => {
+        para.classList.toggle("hidden");
+    });
+};
+
+export { displayWeatherData, toggleElementsVisibility };

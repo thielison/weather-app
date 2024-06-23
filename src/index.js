@@ -1,5 +1,5 @@
 import "./assets/styles/main.css";
-import displayWeatherData from "./modules/weatherUI";
+import { displayWeatherData, toggleElementsVisibility } from "./modules/weatherUI";
 import { fetchWeatherData } from "./modules/weatherAPI";
 
 const validateInputField = () => {
@@ -17,20 +17,34 @@ const validateInputField = () => {
     return validityState.valueMissing;
 };
 
-document.getElementById("submit-btn").addEventListener("click", async (e) => {
-    e.preventDefault();
+const handleWeatherFetch = async (defaultLocation) => {
+    const location = defaultLocation || document.getElementById("location").value;
 
-    const isValueMissing = validateInputField();
+    // For validation failures, the function returns early to avoid unnecessary operations.
+    if (!defaultLocation && validateInputField()) {
+        return;
+    }
 
-    if (!isValueMissing) {
-        const location = document.getElementById("location").value;
+    try {
+        // Display loading icon (and hides page elements) while fetching data
+        toggleElementsVisibility();
+
         const weatherData = await fetchWeatherData(location);
         displayWeatherData(weatherData);
+    } catch (error) {
+        alert(error);
+    } finally {
+        // Hide loading icon (and display page elements) after fetching data
+        toggleElementsVisibility();
     }
+};
+
+document.getElementById("submit-btn").addEventListener("click", async (e) => {
+    e.preventDefault();
+    await handleWeatherFetch();
 });
 
-// City is always selected on first page load
+// Starts the page with a default location
 document.addEventListener("DOMContentLoaded", async () => {
-    const weatherData = await fetchWeatherData("New York");
-    displayWeatherData(weatherData);
+    await handleWeatherFetch("New York");
 });

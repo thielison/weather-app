@@ -49,16 +49,17 @@ const fetchWeatherData = async (location) => {
         });
 
         if (!response.ok) {
-            throw new Error(`Network response was not ok: ${response.statusText}`);
+            throw new Error(`Network response was not OK. Try again with a different input.`);
         }
 
         const data = await response.json();
 
         // Process and return only necessary weather info from the API
         const processedWeatherData = processWeatherData(data);
+
         return processedWeatherData;
     } catch (error) {
-        console.error("Fetch error: ", error);
+        console.error(error);
         throw error;
     }
 };
