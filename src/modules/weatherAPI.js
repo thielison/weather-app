@@ -1,12 +1,40 @@
 const apiKey = "fd654da885e9428aaa611606240606";
 
 const processWeatherData = (weatherData) => {
-    const currentCondition = weatherData.current.condition.text;
+    console.log(weatherData);
+
     const cityName = weatherData.location.name;
     const countryName = weatherData.location.country;
     const localDateTime = weatherData.location.localtime;
 
-    return { cityName, countryName, localDateTime, lastUpdateTime, currentCondition };
+    const currentTempC = weatherData.current.temp_c;
+    const currentCondition = weatherData.current.condition.text;
+    const lowestTempC = weatherData.forecast.forecastday[0].day.mintemp_c;
+    const highestTempC = weatherData.forecast.forecastday[0].day.maxtemp_c;
+    const feelsLikeC = weatherData.current.feelslike_c;
+    const humidity = weatherData.current.humidity;
+    const precipitationMm = weatherData.current.precip_mm;
+    const chanceOfRain = weatherData.forecast.forecastday[0].day.daily_chance_of_rain;
+    const wind = weatherData.current.wind_kph;
+    const sunrise = weatherData.forecast.forecastday[0].astro.sunrise;
+    const sunset = weatherData.forecast.forecastday[0].astro.sunset;
+
+    return {
+        cityName,
+        countryName,
+        localDateTime,
+        currentTempC,
+        currentCondition,
+        lowestTempC,
+        highestTempC,
+        feelsLikeC,
+        humidity,
+        precipitationMm,
+        chanceOfRain,
+        wind,
+        sunrise,
+        sunset,
+    };
 };
 
 const fetchWeatherData = async () => {
