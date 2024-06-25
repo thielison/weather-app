@@ -127,7 +127,7 @@ section.temperature-data div.temp-text-info p.current-climate-text {
     font-weight: 400;
 }
 
-section.temperature-data div.temperature-scales {
+.temperature-scales {
     display: flex;
     margin-top: 1rem;
 }
@@ -192,4 +192,65 @@ div.container .hidden {
 
 .visible {
     display: block;
+}
+
+/* TOGGLE BUTTON C F  */
+.toggleCheckbox {
+    display: none;
+}
+
+.toggleContainer {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    background: none;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #343434;
+    cursor: pointer;
+    top: -7px;
+}
+
+.toggleContainer::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0%;
+    border-radius: 20px;
+    background: white;
+    transition: all 0.3s;
+}
+
+.toggleContainer div {
+    padding: 6px;
+    text-align: center;
+    z-index: 1;
+}
+
+.toggleCheckbox:checked+.toggleContainer::before {
+    left: 50%;
+}
+
+.toggleCheckbox:checked+.toggleContainer div:first-child {
+    color: white;
+    transition: color 0.3s;
+}
+
+.toggleCheckbox:checked+.toggleContainer div:last-child {
+    color: #343434;
+    transition: color 0.3s;
+}
+
+.toggleCheckbox+.toggleContainer div:first-child {
+    color: #343434;
+    transition: color 0.3s;
+}
+
+.toggleCheckbox+.toggleContainer div:last-child {
+    color: white;
+    transition: color 0.3s;
 }

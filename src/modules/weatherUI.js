@@ -4,9 +4,9 @@ const cityCountryEl = document.querySelector("section.city-local-time-info .city
 const localTimeEl = document.querySelector("section.city-local-time-info .localtime");
 const temperatureEl = document.querySelector("div.temp-text-info .temperature");
 const currentClimateTextEl = document.querySelector("div.temp-text-info .current-climate-text");
-const lowestTempElC = document.querySelector(".l-temp-h-temp .lowest-temp");
-const highestTempElC = document.querySelector(".l-temp-h-temp .highest-temp");
-const feelsLikeTempElC = document.querySelector(".l-temp-h-temp .feels-like-temp");
+const lowestTempEl = document.querySelector(".l-temp-h-temp .lowest-temp");
+const highestTempEl = document.querySelector(".l-temp-h-temp .highest-temp");
+const feelsLikeTempEl = document.querySelector(".l-temp-h-temp .feels-like-temp");
 const humidityEl = document.getElementById("humidity");
 const precipitationEl = document.getElementById("precipitation");
 const chanceOfRainEl = document.getElementById("chance-of-rain");
@@ -22,19 +22,34 @@ const displayWeatherData = (weatherData) => {
     const numOfDay = getDay(weatherData.localDateTime);
     localTimeEl.textContent = `${daysOfWeek[numOfDay]} ${format(weatherData.localDateTime, "dd MMMM yyyy | hh:mm")}`;
 
-    temperatureEl.textContent = `${weatherData.currentTempC} °C`;
     currentClimateTextEl.textContent = weatherData.currentCondition;
-    lowestTempElC.textContent = `L: ${weatherData.lowestTempC}°`;
-    highestTempElC.textContent = `H: ${weatherData.highestTempC}°`;
-    feelsLikeTempElC.textContent = `Feels Like: ${weatherData.feelsLikeC}°`;
     humidityEl.textContent = `${weatherData.humidity}%`;
-    precipitationEl.textContent = `${weatherData.precipitationMm}mm`;
+
     chanceOfRainEl.textContent = `${weatherData.chanceOfRain}%`;
-    windEl.textContent = `${weatherData.wind}km/h`;
     sunriseEl.textContent = `${weatherData.sunrise}`;
     sunsetEl.textContent = `${weatherData.sunset}`;
+
+    const currentScalesSelected = document.querySelector(".temperature-scales").dataset.togglePosition;
+
+    if (currentScalesSelected === "C") {
+        temperatureEl.textContent = `${weatherData.currentTempC} °C`;
+        lowestTempEl.textContent = `L: ${weatherData.lowestTempC}°`;
+        highestTempEl.textContent = `H: ${weatherData.highestTempC}°`;
+        feelsLikeTempEl.textContent = `Feels Like: ${weatherData.feelsLikeC}°`;
+        precipitationEl.textContent = `${weatherData.precipitationMm}mm`;
+        windEl.textContent = `${weatherData.windkph}km/h`;
+    } else if (currentScalesSelected === "F") {
+        temperatureEl.textContent = `${weatherData.currentTempF} °F`;
+        lowestTempEl.textContent = `L: ${weatherData.lowestTempF}°`;
+        highestTempEl.textContent = `H: ${weatherData.highestTempF}°`;
+        feelsLikeTempEl.textContent = `Feels Like: ${weatherData.feelsLikeF}°`;
+        precipitationEl.textContent = `${weatherData.precipitationIn}in`;
+        windEl.textContent = `${weatherData.windmph}mph`;
+    }
 };
 
+// This function is used to display a loading icon while fetching data
+// When the loading icon is visible, all elements in the page are hidden
 const toggleElementsVisibility = () => {
     const paraElements = document.querySelectorAll("p");
     const loadingIcon = document.querySelector(".loading-icon");

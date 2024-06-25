@@ -8,16 +8,22 @@ const processWeatherData = ({ location, current, forecast }) => {
 
     const {
         temp_c: currentTempC,
+        temp_f: currentTempF,
         condition: { text: currentCondition },
         feelslike_c: feelsLikeC,
+        feelslike_f: feelsLikeF,
         humidity,
         precip_mm: precipitationMm,
-        wind_kph: wind,
+        precip_in: precipitationIn,
+        wind_kph: windkph,
+        wind_mph: windmph,
     } = current;
 
     const {
         mintemp_c: lowestTempC,
+        mintemp_f: lowestTempF,
         maxtemp_c: highestTempC,
+        maxtemp_f: highestTempF,
         daily_chance_of_rain: chanceOfRain,
     } = forecast.forecastday[0].day;
 
@@ -28,14 +34,20 @@ const processWeatherData = ({ location, current, forecast }) => {
         countryName,
         localDateTime,
         currentTempC,
+        currentTempF,
         currentCondition,
         lowestTempC,
+        lowestTempF,
         highestTempC,
+        highestTempF,
         feelsLikeC,
+        feelsLikeF,
         humidity,
         precipitationMm,
+        precipitationIn,
         chanceOfRain,
-        wind,
+        windkph,
+        windmph,
         sunrise,
         sunset,
     };

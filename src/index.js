@@ -21,6 +21,7 @@ const handleWeatherFetch = async (defaultLocation) => {
     const location = defaultLocation || document.getElementById("location").value;
 
     // For validation failures, the function returns early to avoid unnecessary operations.
+    // If !defaultLocation and validityState.valueMissing = true, return
     if (!defaultLocation && validateInputField()) {
         return;
     }
@@ -42,6 +43,16 @@ const handleWeatherFetch = async (defaultLocation) => {
 document.getElementById("submit-btn").addEventListener("click", async (e) => {
     e.preventDefault();
     await handleWeatherFetch();
+});
+
+// Toggle button to change scales will get the current city already selected by the user
+document.getElementById("toggle").addEventListener("click", async () => {
+    document.querySelector(".temperature-scales").dataset.togglePosition =
+        document.querySelector(".temperature-scales").dataset.togglePosition === "C" ? "F" : "C";
+
+    const cityCountryEl = document.querySelector("section.city-local-time-info .city");
+    const currentLocationSelected = cityCountryEl.textContent;
+    await handleWeatherFetch(currentLocationSelected);
 });
 
 // Starts the page with a default location
