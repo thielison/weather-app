@@ -1,7 +1,7 @@
 :root {
     --main-font-family: "Outfit", sans-serif;
     --background-color: linear-gradient(0deg, #4db7f9 0%, #2c6cbc 100%);
-    --main-font-color: #ececec;
+    --main-font-color: #ffffff;
 }
 
 * {
@@ -12,11 +12,13 @@
 }
 
 body {
-    background-image: url("../images/bg-image.jpeg");
+    /* background-image: url("../images/drizzle.jpg"); */
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     font-family: var(--main-font-family);
     color: var(--main-font-color);
+    text-shadow: rgba(0, 0, 0, 0.6) 0px 0 5px;
 }
 
 .container {
@@ -197,6 +199,7 @@ div.container .hidden {
 /* TOGGLE BUTTON C F  */
 .toggleCheckbox {
     display: none;
+
 }
 
 .toggleContainer {
@@ -212,6 +215,7 @@ div.container .hidden {
     color: #343434;
     cursor: pointer;
     top: -7px;
+    text-shadow: none
 }
 
 .toggleContainer::before {

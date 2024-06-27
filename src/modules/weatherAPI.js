@@ -10,6 +10,8 @@ const processWeatherData = ({ location, current, forecast }) => {
         temp_c: currentTempC,
         temp_f: currentTempF,
         condition: { text: currentCondition },
+        // Code related to each current weather condition
+        condition: { code },
         feelslike_c: feelsLikeC,
         feelslike_f: feelsLikeF,
         humidity,
@@ -50,6 +52,7 @@ const processWeatherData = ({ location, current, forecast }) => {
         windmph,
         sunrise,
         sunset,
+        code,
     };
 };
 
