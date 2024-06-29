@@ -45,10 +45,16 @@ document.getElementById("submit-btn").addEventListener("click", async (e) => {
     await handleWeatherFetch();
 });
 
-// Toggle button to change scales will get the current city already selected by the user
+const convertWeatherUnits = () => {
+    const weatherUnitsBtn = document.querySelector(".temperature-scales");
+    const currentUnit = weatherUnitsBtn.dataset.togglePosition;
+
+    weatherUnitsBtn.dataset.togglePosition = currentUnit === "C" ? "F" : "C";
+};
+
+// Toggle button to change weather units gets the current city (already selected by the user)
 document.getElementById("toggle").addEventListener("click", async () => {
-    document.querySelector(".temperature-scales").dataset.togglePosition =
-        document.querySelector(".temperature-scales").dataset.togglePosition === "C" ? "F" : "C";
+    convertWeatherUnits();
 
     const cityCountryEl = document.querySelector("section.city-local-time-info .city");
     const currentLocationSelected = cityCountryEl.textContent;
