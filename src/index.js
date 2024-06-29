@@ -2,6 +2,9 @@ import "./assets/styles/main.css";
 import { displayWeatherData, toggleElementsVisibility } from "./modules/weatherUI";
 import { fetchWeatherData } from "./modules/weatherAPI";
 
+const submitButton = document.getElementById("submit-btn");
+const toggleWeatherUnitsBtn = document.getElementById("toggle");
+
 const validateInputField = () => {
     const input = document.getElementById("location");
     const validityState = input.validity;
@@ -40,11 +43,6 @@ const handleWeatherFetch = async (defaultLocation) => {
     }
 };
 
-document.getElementById("submit-btn").addEventListener("click", async (e) => {
-    e.preventDefault();
-    await handleWeatherFetch();
-});
-
 const convertWeatherUnits = () => {
     const weatherUnitsBtn = document.querySelector(".temperature-scales");
     const currentUnit = weatherUnitsBtn.dataset.togglePosition;
@@ -52,8 +50,13 @@ const convertWeatherUnits = () => {
     weatherUnitsBtn.dataset.togglePosition = currentUnit === "C" ? "F" : "C";
 };
 
+submitButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+    await handleWeatherFetch();
+});
+
 // Toggle button to change weather units gets the current city (already selected by the user)
-document.getElementById("toggle").addEventListener("click", async () => {
+toggleWeatherUnitsBtn.addEventListener("click", async () => {
     convertWeatherUnits();
 
     const cityCountryEl = document.querySelector("section.city-local-time-info .city");
