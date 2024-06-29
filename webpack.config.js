@@ -20,6 +20,9 @@ module.exports = {
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "dist"),
+        // Images inside its own folder in dist
+        // https://webpack.js.org/configuration/module/#rulegeneratorfilename
+        assetModuleFilename: "images/[hash][ext][query]",
         clean: true,
     },
     module: {
